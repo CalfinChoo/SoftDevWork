@@ -12,6 +12,7 @@ KREWES = {
 def name(dict):
     # A neat way to unpack a dictionary.  It converts dictionary into a list of key and list pairs, chooses a random pair, and the assigns the key and list to separate variables.
     # URL: https://stackoverflow.com/questions/4859292/how-to-get-a-random-value-in-python-dictionary
+    # Then I just printed the team and a random item from the list (WHICH I ALSO HAD TO LOOK UP - URL: https://stackoverflow.com/questions/306400/how-to-randomly-select-an-item-from-a-list)
     team, names = random.choice(list(dict.items()))
     print(team + " : " + random.choice(names))
 
