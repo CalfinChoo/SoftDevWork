@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> {{ foo }} </title>
+    <h1>Occupation Randomizer</h1>
+    <h4>Calvin Chu of TeamKubica (with Jun Tao Lei)
+      <br>
+      SoftDev1 pd9
+      <br>
+      K10 -- Jinja Tuning
+      <br>
+      2019-09-22
+    </h4>
+  </head>
+  <body>
+    {% if a %}
+      Your random occupation is:
+      {{a}}
+    {% endif %}
+    <table>
+      <th> Occupations </th>
+      <th> Percentages </th>
+    {% for i in c %}
+    <tr>
+      <td>
+      {{ i }}
+      </td>
+      <td>
+      {{ c[i] }}
+      </td>
+    </tr>
+    {% endfor %}
+    </table>
+  </body>
+</html>
