@@ -3,35 +3,45 @@
 #K11 - Forms
 #2019-10-02
 
-from flask import Flask, render_template, request, redirect
-import cgi
+from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
-Error = ""
-username = ""
-password = ""
+# Instantiates a variable to contain a potential error message
+error = ""
+
+# Root serves as our login page
 @app.route("/")
 def makeForm():
-    return render_template('app.html')
+    global error
+    # If there is an error message, reset the variable and display the login page with the error message
+    if (error != ""):
+        message = error
+        error = ""
+        return render_template('app.html', e = message)
+    # Else display the login page normally
+    else :
+        return render_template('app.html')
 
-@app.route("/auth")
+# /login route serves as welcome page
+@app.route("/login")
 def authenticate():
+    global error
+    # Hardcoded a username and password
     use = "giraffe"
     pas = "g"
-    username = request.args["username"]
-    password = request.args["password"]
-    if(username == "giraffe" and password == "g"):
-        Error = ""
-        return redirect("/login")
-
+    # Stores user's inputs from login page
+    username = request.args["user"] + ""
+    password = request.args["pass"] + ""
+    # If inputs match hardcoded username and password, reset error message and display welcome page with logout button
+    # **Logout button reroutes to root**
+    if(username == use and password == pas):
+        error = ""
+        return render_template('welcome.html',
+                                username = username)
+    # Else set an error message and redirect back to root
     else:
-        Error = "Wrong username or Password"
-        return render_template("app.html")
-
-
-@app.route("/login")
-def welcome():
-    return "4"
+        error = "Wrong username or password"
+        return redirect(url_for('makeForm'))
 
 
 
