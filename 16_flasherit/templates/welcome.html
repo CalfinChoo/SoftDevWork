@@ -1,0 +1,16 @@
+{% extends "app.html" %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% block title %} Welcome {% endblock %}
+    <title> </title>
+  </head>
+  <body>
+    {% block body %}
+    <h1>Welcome, {{username}}!</h1>
+    <form action="/" >
+      <input type = "submit" value = "Logout">
+    {% endblock %}
+  </body>
+</html>
