@@ -33,11 +33,13 @@ with open('courses.csv') as csvfile:
          c.execute('INSERT INTO courses VALUES (?, ?, ?)', (row["code"], row["mark"], row["id"]))
 
 #Runs SELECT command and prints all results in tables
-command = "SELECT * FROM students"          # test SQL stmt in sqlite3 shell, save as string
-c.execute(command)    # run SQL statement
-print(c.fetchall())
-c.execute('SELECT * FROM courses')
-print(c.fetchall())
+# command = "SELECT * FROM students"          # test SQL stmt in sqlite3 shell, save as string
+# c.execute(command)    # run SQL statement
+# print(c.fetchall())
+# c.execute('SELECT * FROM courses')
+# print(c.fetchall())
+for bar in DB_FILE:
+    print bar
 
 #==========================================================
 
