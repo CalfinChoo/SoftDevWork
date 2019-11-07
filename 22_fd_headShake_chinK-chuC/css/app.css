@@ -22,3 +22,16 @@
 .input-group-field {
   white-space: nowrap;
 }
+
+.card {
+  background: #033f63;
+  text-shadow: 0 10px  20px 0 rgba($dark-gray, 0.6);
+  color: white;
+  padding: 0.25rem;
+  border-radius: 10px;
+}
+
+.card-divider {
+  color: black;
+  background: #28666e;
+}

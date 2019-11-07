@@ -10,17 +10,20 @@
   <head>
     <meta charset="utf-8"/>
     <title>foo title</title>
-    <link rel="stylesheet" href="css/foundation.css">
+    <!-- <link rel="stylesheet" href="css/foundation.css"> -->
+    <!-- Compressed CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/css/foundation.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.5.3/js/foundation.js"></script>
     <link rel="stylesheet" href="css/app.css">
   </head>
 
   <body>
     <ul class="menu expanded">
     <li><a href="#"><b>SITE</b></a></li>
-    <li><a href="#"><span>One</span></a></li>
-    <li><a href="#"><span>Two</span></a></li>
-    <li><a href="#"><span>Three</span></a></li>
-    <li><a href="#"><span>Four</span></a></li>
+    <li><a href="#"><span>Home</span></a></li>
+    <li><a href="#"><span>Profile</span></a></li>
+    <li><a href="#"><span>Edit</span></a></li>
+    <li><a href="#"><span>Logout</span></a></li>
         <form method="GET" action="">
           <div class="input-group">
             <li>
@@ -33,29 +36,145 @@
             </div>
           </div>
         </form>
-    </ul>
+      </ul>
 
-    <div class="row">
-      <div class="large-12 columns">
-      </div>
-    </div>
-
-    <div class="row small-up-2 medium-up-3">
-
-      <div class="columnn">
-        <div class="card" style="width:300px">
-          <img src="http://placehold.it/600x300"
-          <div class="card-divider">
-            Joe
-          </div>
-          <div class="card-section">
-            <h4> This is a card. </h4>
-            <p> Cool right? </p>
-          </div>
+  <div class="grid-container">
+  <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+    <div class="cell">
+      <div class="card">
+        <div class="card-divider">
+        You can insert your image here!
+        </div>
+        <img src="https://images.wisegeek.com/laughing-man-pointing.jpg">
+        <div class="card-section">
+          <h4> This is a card. </h4>
+          <p> Cool right? </p>
         </div>
       </div>
-
     </div>
+    <div class="cell">
+      <div class="card">
+        <div class="card-divider">
+        You can insert your image here!
+        </div>
+        <img src="https://st.depositphotos.com/1177254/1694/i/950/depositphotos_16944119-stock-photo-excited-man-with-hands-up.jpg">
+        <div class="card-section">
+          <h4> This is a card. </h4>
+          <p> Cool right? </p>
+        </div>
+      </div>
+    </div>
+    <div class="cell">
+      <div class="card">
+        <div class="card-divider">
+        You can insert your image here!
+        </div>
+        <img src="https://popzebra.wildoutline.com/wp-content/uploads/sites/12/2017/07/funny-guy-pointing-left-1400.png">
+        <div class="card-section">
+          <h4> This is a card. </h4>
+          <p> Cool right? </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  </body>
+<div class="media-object">
+<div class="media-object-section">
+  <div class="thumbnail">
+    <img src="https://image.businessinsider.com/5c38effbbd77300f457905c7?width=700&format=jpeg&auto=webp">
+  </div>
+</div>
+<div class="media-object-section">
+  <h4>This is a media object (another type of container).</h4>
+  <p>It can hold images AND text! WOW!</p>
+</div>
+</div>
+
+
+<nav aria-label="Pagination">
+  <ul class="pagination">
+    <li class="pagination-previous disabled">Previous <span class="show-for-sr">page</span></li>
+    <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
+    <li><a href="#" aria-label="Page 2">2</a></li>
+    <li><a href="#" aria-label="Page 3">3</a></li>
+    <li><a href="#" aria-label="Page 4">4</a></li>
+    <li class="ellipsis" aria-hidden="true"></li>
+    <li><a href="#" aria-label="Page 12">12</a></li>
+    <li><a href="#" aria-label="Page 13">13</a></li>
+    <li class="pagination-next"><a href="page2.html" aria-label="Next page">Next <span class="show-for-sr">page</span></a></li>
+  </ul>
+</nav>
+
+    <!-- <table>
+  <thead>
+    <tr>
+      <th width="200">Table Header</th>
+      <th>Table Header</th>
+      <th width="150">Table Header</th>
+      <th width="150">Table Header</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer content.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer content.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+    <tr>
+      <td>Content Goes Here</td>
+      <td>This is longer content.</td>
+      <td>Content Goes Here</td>
+      <td>Content Goes Here</td>
+    </tr>
+  </tbody>
+</table> -->
+
+<!-- <div class="row">
+  <div class="columns">
+    <ul class="tabs" data-tabs id="example-tabs">
+      <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Tab 1</a></li>
+      <li class="tabs-title"><a data-tabs-target="panel2" href="#panel2">Tab 2</a></li>
+      <li class="tabs-title"><a href="#panel3">Tab 3</a></li>
+      <li class="tabs-title"><a href="#panel4">Tab 4</a></li>
+      <li class="tabs-title"><a href="#panel5">Tab 5</a></li>
+      <li class="tabs-title"><a href="#panel6">Tab 6</a></li>
+    </ul>
+
+    <div class="tabs-content" data-tabs-content="example-tabs">
+      <div class="tabs-panel" id="panel1">
+        <p>One</p>
+        <p>Check me out! I'm a super cool Tab panel with text content!</p>
+      </div>
+      <div class="tabs-panel" id="panel2">
+        <p>Two</p>
+        <img class="thumbnail" src="//foundation.zurb.com/sites/docs/assets/img/generic/rectangle-7.jpg">
+      </div>
+      <div class="tabs-panel" id="panel3">
+        <p>Three</p>
+        <p>Check me out! I'm a super cool Tab panel with text content!</p>
+      </div>
+      <div class="tabs-panel" id="panel4">
+        <p>Four</p>
+        <img class="thumbnail" src="//foundation.zurb.com/sites/docs/assets/img/generic/rectangle-2.jpg">
+      </div>
+      <div class="tabs-panel" id="panel5">
+        <p>Five</p>
+        <p>Check me out! I'm a super cool Tab panel with text content!</p>
+      </div>
+      <div class="tabs-panel" id="panel6">
+        <p>Six</p>
+        <img class="thumbnail" src="//foundation.zurb.com/sites/docs/assets/img/generic/rectangle-8.jpg">
+      </div>
+    </div>
+  </div>
+</div> -->
+
 </html>
