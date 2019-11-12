@@ -17,7 +17,8 @@ def root():
     response = u.read()
     data = json.loads(response)
     return render_template("index.html",
-                            pic = data['url'])
+                            pic = data['url'],
+                            exp = data['explanation'])
 
 
 if __name__ == "__main__":
