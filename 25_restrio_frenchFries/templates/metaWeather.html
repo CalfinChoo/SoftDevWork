@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+  </head>
+  <body>
+    <h1> {{name}} </h1>
+    <p>Timezone: {{tz}} </p>
+    <p>Location: {{ll}} </p>
+    <h3> Consolidated Weather </h3>
+    {% for e in cw %}
+      {% for k, v in e.items() %}
+      {{k}} : {{v}}
+      <br>
+      {% endfor %}
+      <br>
+    {% endfor %}
+    <h3> Sources </h3>
+    {% for e in s %}
+      {% for k, v in e.items() %}
+      {{k}} : {{v}}
+      <br>
+      {% endfor %}
+      <br>
+    {% endfor %}
+  </body>
+</html>
