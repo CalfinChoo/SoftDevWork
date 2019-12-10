@@ -7,12 +7,12 @@ var fib = function(args) {
   else if (args == 1) return 1;
   else return fib(args - 1) + fib(args - 2);
 };
+var gcdH = function(a, b, c) {
+  if (a % c == 0 && b % c == 0) return c;
+  else return gcdH(a, b, c-1);
+};
 var gcd = function(a, b) {
   if (a == b) return a;
-  if (a < b) {
-    if (b % a == 0) return a;
-    else return gcd(a-1, b);
-  }
-  else if (a % b == 0) return b;
-  else return gcd(a, b-1);
+  else if (a < b) return gcdH(a, b, a);
+  else return gcdH(a, b, b);
 };
