@@ -16,3 +16,8 @@ var gcd = function(a, b) {
   else if (a < b) return gcdH(a, b, a);
   else return gcdH(a, b, b);
 };
+students = ['Henry', 'Sydney', 'Calvin']
+var randomStudent = function(){
+  var index = Math.floor(Math.random() * students.length);
+  return students[index];
+};
