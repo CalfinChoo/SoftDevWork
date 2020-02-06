@@ -15,7 +15,7 @@ var clear = document.getElementById("clear");
 
 var draw = function(d){
   isDrawing = d;
-  if (isDrawing && option == 0) ctx.fillRect(event.clientX - c.getBoundingClientRect().left, event.clientY - c.getBoundingClientRect().top, 5, 5);
+  if (isDrawing && option == 0) ctx.arc(event.clientX - c.getBoundingClientRect().left, event.clientY - c.getBoundingClientRect().top, 100, 0, 2 * Math.PI);
   if (isDrawing && option == 1 && corners.length == 0) {
     corners.push(event.clientX - c.getBoundingClientRect().left);
     corners.push(event.clientY - c.getBoundingClientRect().top);
@@ -36,7 +36,10 @@ var draw = function(d){
 var move = function(e){
   if (isDrawing) {
     if (option == 0) {
-      ctx.fillRect(event.clientX - c.getBoundingClientRect().left, event.clientY - c.getBoundingClientRect().top, 5, 5);
+      ctx.beginPath();
+      ctx.arc(event.clientX - c.getBoundingClientRect().left, event.clientY - c.getBoundingClientRect().top, 4, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.fill();
     }
   }
 };
