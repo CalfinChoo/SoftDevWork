@@ -5,8 +5,6 @@
 
 var c = document.getElementById("playground");
 var ctx = c.getContext('2d');
-var option = 0; // 0 (default = dot)
-                // 1 (rect)
 
 var lastPoint = []
 var draw = function() {
