@@ -36,5 +36,5 @@ var draw = function(e) {
 
 var anim = document.getElementById("anim");
 var stop = document.getElementById("stop");
-anim.addEventListener("click", function(){if (!isDrawing) {id = window.requestAnimationFrame(draw); isDrawing = true;}});
+anim.addEventListener("click", function(){if (!isDrawing) {draw(); isDrawing = true;}});
 stop.addEventListener("click", function(){window.cancelAnimationFrame(id); isDrawing = false;});
