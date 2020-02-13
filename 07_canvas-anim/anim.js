@@ -7,27 +7,26 @@
 var c = document.getElementById("slate");
 var ctx = c.getContext("2d");
 
-var r = 0;
-var grow = true;
-var id;
-var isDrawing = false;
+var r = 0; //keeps trqack of radius
+var grow = true; //decides to shrink or grow circle
+var id; //stores id from requestAnimationFrame
+var isDrawing = false; //tells if circle is / is not currently being drawn
 
-var draw = function(e) {
-  //console.log(c);
-  ctx.clearRect(0,0,c.height,c.width);
+var draw = function() {
+  ctx.clearRect(0,0,c.height,c.width); // clears canvas
   ctx.beginPath();
   ctx.fillStyle = "#007BA7";
-  ctx.arc(c.height/2, c.width/2, r, 0, 2 * Math.PI, true);
+  ctx.arc(c.height/2, c.width/2, r, 0, 2 * Math.PI, true); //draws circle of radius r in the center
   ctx.fill();
-  if (grow) {
+  if (grow) { // increases circle radius with each call to draw
     r += 1;
-    if (r == c.height/2) {
+    if (r == c.height/2) { // circle hits border -> grow boolean flips
       grow = false;
     }
   }
-  else {
+  else { // decreases  circle radius with each call to draw
     r -= 1;
-    if (r == 0) {
+    if (r == 0) { // circle shrinks to nothing -> grow boolean flips
       grow = true;
     }
   }
@@ -36,5 +35,5 @@ var draw = function(e) {
 
 var anim = document.getElementById("anim");
 var stop = document.getElementById("stop");
-anim.addEventListener("click", function(){if (!isDrawing) {draw(); isDrawing = true;}});
-stop.addEventListener("click", function(){window.cancelAnimationFrame(id); isDrawing = false;});
+anim.addEventListener("click", function(){if (!isDrawing) {draw(); isDrawing = true;}}); // calls draw if not already drawing
+stop.addEventListener("click", function(){window.cancelAnimationFrame(id); isDrawing = false;}); // cancels animation and turns drawing off
