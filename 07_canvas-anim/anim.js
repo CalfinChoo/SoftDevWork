@@ -3,6 +3,9 @@
 // K07: They lock us in the tower whenever we get caught
 // 2020-02-12
 
+//var logo = new Image();
+//logo.src = "logo_dvd.jpg";
+//ctx.drawImage(?);
 
 var c = document.getElementById("slate");
 var ctx = c.getContext("2d");

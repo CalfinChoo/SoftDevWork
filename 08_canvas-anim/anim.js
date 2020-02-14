@@ -10,7 +10,7 @@ var ctx = c.getContext("2d");
 var r = 0; //keeps trqack of radius
 var grow = true; //decides to shrink or grow circle
 var id; //stores id from requestAnimationFrame
-var isDrawing = false, isMoving = false; //tells if circle is / is not currently being drawn
+var isDrawing = false; //tells if circle is / is not currently being drawn
 
 var draw = function() {
   ctx.clearRect(0,0,c.height,c.width); // clears canvas
@@ -58,6 +58,6 @@ var move = function() {
 var anim = document.getElementById("anim");
 var stop = document.getElementById("stop");
 var movie = document.getElementById("movie");
-anim.addEventListener("click", function(){if (!isDrawing) {window.cancelAnimationFrame(id); draw(); isDrawing = true; isMoving = false}}); // calls draw if not already drawing
-movie.addEventListener("click", function(){if (!isMoving) {window.cancelAnimationFrame(id); x = Math.floor(Math.random() * (c.width - 2*width + 1) + width); y = Math.floor(Math.random() * (c.height - 2*height + 1) + height); direction = Math.random() * 2 * Math.PI; move(); isDrawing = false; isMoving = true;}});
-stop.addEventListener("click", function(){window.cancelAnimationFrame(id); isDrawing = false; isMoving = false;}); // cancels animation and turns drawing off
+anim.addEventListener("click", function(){if (!isDrawing) {window.cancelAnimationFrame(id); draw(); isDrawing = true;}}); // calls draw if not already drawing
+movie.addEventListener("click", function(){window.cancelAnimationFrame(id); x = Math.floor(Math.random() * (c.width - 2*width + 1) + width); y = Math.floor(Math.random() * (c.height - 2*height + 1) + height); direction = Math.random() * 2 * Math.PI; move(); isDrawing = false;});
+stop.addEventListener("click", function(){window.cancelAnimationFrame(id); isDrawing = false;}); // cancels animation and turns drawing off
