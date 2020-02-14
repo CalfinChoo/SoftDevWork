@@ -1,6 +1,6 @@
 // Calvin Chu, Benjamin Avrahami
 // SoftDev1 pd9
-// K07: They lock us in the tower whenever we get caught
+// K08: What is it saving the screen from?
 // 2020-02-13
 
 
@@ -10,7 +10,7 @@ var ctx = c.getContext("2d");
 var r = 0; //keeps trqack of radius
 var grow = true; //decides to shrink or grow circle
 var id; //stores id from requestAnimationFrame
-var isDrawing = false; //tells if circle is / is not currently being drawn
+var isDrawing = false, isMoving = false; //tells if circle is / is not currently being drawn
 
 var draw = function() {
   ctx.clearRect(0,0,c.height,c.width); // clears canvas
@@ -33,28 +33,31 @@ var draw = function() {
   id = window.requestAnimationFrame(draw);
 }
 
-var x, y, direction, velocity = 1;
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
+var x, y, direction, velocity = 1, width = 171, height = 87;
+var img = new Image();
+img.src = 'logo.png';
 
 var move = function() {
   ctx.clearRect(0,0,c.height,c.width);
-  ctx.beginPath();
-  ctx.arc(x, y, 10, 0, 2 * Math.PI, true);
-  ctx.fill();
-  if (x + Math.cos(direction) * velocity) {
-
+  ctx.drawImage(img, x - width/2, y - height/2, width, height);
+  if (x - width/2 + Math.cos(direction) * velocity < 0 || x + width/2 + Math.cos(direction) * velocity > c.width) {
+    direction = Math.PI - direction;
   }
-  if (y + Math.sin(direction) * velocity) {
-    
+  else {
+    x += Math.cos(direction) * velocity;
   }
-  //id = window.requestAnimationFrame(move);
+  if (y - height/2 + Math.sin(direction) * velocity < 0 || y + height/2 + Math.sin(direction) * velocity > c.height) {
+    direction = 2*Math.PI - direction;
+  }
+  else {
+    y += Math.sin(direction) * velocity;
+  }
+  id = window.requestAnimationFrame(move);
 }
 
 var anim = document.getElementById("anim");
 var stop = document.getElementById("stop");
 var movie = document.getElementById("movie");
-anim.addEventListener("click", function(){if (!isDrawing) {draw(); isDrawing = true;}}); // calls draw if not already drawing
-movie.addEventListener("click", function(){if (!isDrawing) {x = getRandomInt(c.width); y = getRandomInt(c.height); direction = Math.random() * 2; move(); isDrawing = true;}});
-stop.addEventListener("click", function(){window.cancelAnimationFrame(id); isDrawing = false;}); // cancels animation and turns drawing off
+anim.addEventListener("click", function(){if (!isDrawing) {window.cancelAnimationFrame(id); draw(); isDrawing = true; isMoving = false}}); // calls draw if not already drawing
+movie.addEventListener("click", function(){if (!isMoving) {window.cancelAnimationFrame(id); x = Math.floor(Math.random() * (c.width - 2*width + 1) + width); y = Math.floor(Math.random() * (c.height - 2*height + 1) + height); direction = Math.random() * 2 * Math.PI; move(); isDrawing = false; isMoving = true;}});
+stop.addEventListener("click", function(){window.cancelAnimationFrame(id); isDrawing = false; isMoving = false;}); // cancels animation and turns drawing off
