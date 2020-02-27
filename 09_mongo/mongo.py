@@ -4,7 +4,8 @@
 #2020-02-26
 
 from pymongo import MongoClient
-import urllib2, json
+import json
+from bson.json_util import loads
 
 client = MongoClient()
 db = client.test
@@ -15,10 +16,15 @@ collection = db.restaurants
 # data = json.loads(u.read())
 f = open("data.json","r")
 response = f.read()
-data = json.loads(response)
+data = loads(response)
 f.close()
 for post in data:
     collection.insert_one(post)
 
-#
-# print(data)
+def borough_query():
+
+def zip_query():
+
+def zip_grade_query():
+
+def zip_thresGrade_query():
