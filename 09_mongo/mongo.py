@@ -21,10 +21,10 @@ f.close()
 for post in data:
     collection.insert_one(post)
 
-def borough_query():
+def borough_query(b):
 
-def zip_query():
+def zip_query(z):
 
-def zip_grade_query():
+def zip_grade_query(z, g):
 
-def zip_thresGrade_query():
+def zip_thresGrade_query(z, g):
