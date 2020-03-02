@@ -18,3 +18,8 @@ if (db.collection_count() == 0):
     f.close()
     for post in data:
         collection.insert_one(post)
+
+def getID(id):
+    for x in (collection.find({"pokemon.id" : id})):
+        pprint.pprint(x)
+getID(1)
