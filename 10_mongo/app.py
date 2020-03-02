@@ -11,15 +11,15 @@ client = MongoClient()
 db = client.db
 collection = db.pokemon
 
-if (db.collection_count() == 0):
-    f = open("data.json","r")
+if (collection.count() == 0):
+    f = open("pokedex.json","r")
     response = f.read()
     data = loads(response)
     f.close()
-    for post in data:
+    for post in data['pokemon']:
         collection.insert_one(post)
 
 def getID(id):
-    for x in (collection.find({"pokemon.id" : id})):
+    for x in (collection.find({"id" : id})):
         pprint.pprint(x)
 getID(1)
