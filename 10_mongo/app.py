@@ -22,4 +22,14 @@ if (collection.count() == 0):
 def getID(id):
     for x in (collection.find({"id" : id})):
         pprint.pprint(x)
+def getNum(num):
+    for x in (collection.find({"num" : num})):
+        pprint.pprint(x)
+def getName(name):
+    for x in (collection.find({"name" : name})):
+        pprint.pprint(x)
+def getImg(img):
+    for x in (collection.find({"img" : img})):
+        pprint.pprint(x)
+
 getID(1)
