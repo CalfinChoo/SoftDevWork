@@ -3,6 +3,16 @@
 #K10: Import/Export Bank
 #2020-02-28
 
+#   Dataset is called Pokedex, and it contains pokemon names and their features/characteristics/atributes/information.
+#   This information includes their ID, number, name, image link, type(s), height, weight, associated candy, candy_count,
+#   egg distance, spawn chance, average spawns, spawn time, multiplers, weaknessess, and next/prev evolution information (if
+#   it exists).
+#
+#   Raw Data Link: https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json
+#
+#   Import Mechanism: Checks to see if collections in database. If not, open the pokede.json file, read it, load it using
+#   bson.json_util loads method, and then loop through it and individually insert each document into the collection. 
+
 from pymongo import MongoClient
 from bson.json_util import loads
 import pprint, numbers
