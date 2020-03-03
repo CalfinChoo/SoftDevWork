@@ -5,10 +5,10 @@
 
 from pymongo import MongoClient
 from bson.json_util import loads
-import pprint
+import pprint, numbers
 
 client = MongoClient()
-db = client.db
+db = client.ShortCircuit
 collection = db.pokemon
 
 if (collection.count() == 0):
@@ -38,6 +38,84 @@ def getTypes(t1, t2):
     for x in (collection.find({"$and" : [{"type" : {"$in" : [t1]}}, {"type" : {"$in" : [t2]}} ]})):
         pprint.pprint(x)
 def getMaxHeight(h):
-    for x in (collection.find({}, {"height":1})):	
-        print(x['height'])
-getMaxHeight(1)
+    h = float(h)
+    while (h > 0):
+	i = "{:0.2f}".format(h) + " m"
+        for x in (collection.find({"height" : i})):
+	    pprint.pprint(x)
+	h -= .01
+def getMaxWeight(w):
+    w = float(w)
+    while (w > 0):
+        i = "{:0.1f}".format(w) + " kg"
+        for x in (collection.find({"weight" : i})):
+            pprint.pprint(x)
+        w -= .1
+def getCandy(c):
+    for x in (collection.find({"candy" : c})):
+        pprint.pprint(x)
+def getCandyCount(c):
+    for x in (collection.find({"candy_count" : c})):
+        pprint.pprint(x)
+def getMaxEgg(e):
+    if (isinstance(e, numbers.Number)):
+        while (e > 0):
+            i = str(int(e)) + " km"
+            for x in (collection.find({"egg" : i})):
+                 pprint.pprint(x)
+            e -= 1
+    else:
+        for x in (collection.find({"egg" : e})):
+            pprint.pprint(x)
+def getMaxSpawnChance(c):
+    for x in (collection.find({"spawn_chance" : {"$lte" : c}})):
+        pprint.pprint(x)
+def getMaxAvgSpawns(s):
+    for x in (collection.find({"avg_spawns" : {"$lte" : s}})):
+        pprint.pprint(x)
+def getSpawnTime(t):
+    for x in (collection.find({"spawn_time" : t})):
+        pprint.pprint(x)
+def getMultipliers(m):
+    for x in (collection.find({"multipliers" : {"$in" : [m]}})):
+        pprint.pprint(x)
+def getWeakness(w):
+    for x in (collection.find({"weaknesses" : {"$in" : [w]}})):
+        pprint.pprint(x)
+def getNextEvNum(n):
+    for x in (collection.find({"next_evolution.num" : n})):
+        pprint.pprint(x)
+def getNextEvName(n):
+    for x in (collection.find({"next_evolution.name" : n})):
+        pprint.pprint(x)
+def getPrevEvNum(n):
+    for x in (collection.find({"prev_evolution.num" : n})):
+        pprint.pprint(x)
+def getPrevEvName(n):
+    for x in (collection.find({"prev_evolution.name" : n})):
+        pprint.pprint(x)
+
+
+#getID(1)
+#getNum("001")
+#getName("Cloyster")
+#getImg("http://www.serebii.net/pokemongo/pokemon/003.png")
+#getType("Fire")
+#getTypes("Fire", "Flying")
+#getMaxHeight(.2)
+#getMaxWeight(.2)
+#getCandy("Charmander Candy")
+#getCandyCount(25)
+#getMaxEgg(2)
+#getMaxEgg("Not in Eggs")
+#getMaxSpawnChance(.008)
+#getMaxAvgSpawns(2.3)
+#getSpawnTime("07:00")
+#getMultipliers(1.2)
+#getWeakness("Water")
+#getNextEvNum("005")
+#getNextEvName("Blastoise")
+#getPrevEvNum("007")
+#getPrevEvName("Caterpie")
+
+getName("Pikachu")
