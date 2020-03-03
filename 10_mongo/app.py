@@ -31,5 +31,13 @@ def getName(name):
 def getImg(img):
     for x in (collection.find({"img" : img})):
         pprint.pprint(x)
-
-getID(1)
+def getType(t):
+    for x in (collection.find({"type" : {"$in" : [t]}})):
+        pprint.pprint(x)
+def getTypes(t1, t2):
+    for x in (collection.find({"$and" : [{"type" : {"$in" : [t1]}}, {"type" : {"$in" : [t2]}} ]})):
+        pprint.pprint(x)
+def getMaxHeight(h):
+    for x in (collection.find({}, {"height":1})):	
+        print(x['height'])
+getMaxHeight(1)
