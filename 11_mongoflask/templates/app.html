@@ -35,7 +35,9 @@
     </form>
       <br>
       {% if i %}
-      {{i}}
+      {% for x in i %}
+      {{x}}<br><br>
+      {% endfor %}
       {% endif %}
   </body>
 </html>

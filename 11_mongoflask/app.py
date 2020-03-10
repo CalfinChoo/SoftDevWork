@@ -163,11 +163,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
-    if (len(request.args) == 0):
+    if (len(request.args) == 0 or len(request.args['input']) == 0):
         return render_template('app.html')
     else:
         if (request.args['search'] == 'id'):
-            return render_template('app.html', i = getID(request.args['input']))
+            print("HHERE")
+            return render_template('app.html', i = getID(int(request.args['input'])))
         elif (request.args['search'] == 'num'):
             return render_template('app.html', i = getNum(request.args['input']))
         elif (request.args['search'] == 'name'):
