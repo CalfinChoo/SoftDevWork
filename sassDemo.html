@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Sass Demo</title>
+    <a href="https://sass-lang.com/">
+  <img border="5pc" alt="W3Schools" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/1200px-Sass_Logo_Color.svg.png" width="100" height="100">
+  </a>
+    </head>
+  <body>
+    <br><br>
+    <h1> Sass - Syntactically Awesome Style Sheets</h1><hr>
+    <h3> What is Sass? </h3>
+    <p> It’s a CSS preprocessor, or a stylesheet language that compiles to CSS.
+        It allows you to to keep things organized and create stylesheets more efficiently using features such as variables, nested rules, operators and more.
+        It supports all versions of CSS.
+    </p><hr>
+    <h3> Some basic distinctions with Less </h3>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Sass</th>
+      <th scope="col">Both</th>
+      <th scope="col">Less</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Based on Dart (originally Ruby)<br>
+Designed to simplify and extend CSS<br>
+Older, more popular (2006)
+</td>
+      <td>Mixins<br>
+Variables<br>
+Nesting<br>
+Imports<br>
+Operations
+</td>
+      <td>Based on JS<br>
+Superset of CSS - designed to be as close to CSS as possible<br>
+Newer (2009)
+</td>
+    </tr>
+  </tbody>
+</table><hr>
+<h3> Installation </h3>
+<p>
+1) <b>Standalone</b> <br>
+- Download package from <a href="https://github.com/sass/dart-sass/releases/tag/1.26.3"> https://github.com/sass/dart-sass/releases/tag/1.26.3 </a><br>
+- Unzip and add folder to PATH<br>
+2) <b>Node.js (npm) - (Disclaimer: runs somewhat slower than other options): </b><br>
+<code>npm install -g sass</code> <br>
+3) <b>Chocolatey (Windows) - (<a href="https://chocolatey.org/install">https://chocolatey.org/install</a>)</b>: <br>
+<code>choco install sass</code> <br>
+4) <b>Homebrew (Mac):</b> <br>
+<code>brew install sass/sass/sass</code>
+  </p><hr>
+<h3> Compiling </h3>
+<p><b>To manually compile your Sass file into CSS, type in the console:</b><br>
+<code>sass input.scss output.css</code><br>
+<b>To have it re-compile into CSS each time you save your Sass:</b><br>
+<code>sass --watch input.scss output.css</code><br>
+<b>To have it watch for all files in one directory (ex. app/sass) and compile CSS to another (ex. public/stylesheets):</b><br>
+<code>sass --watch app/sass:public/stylesheets</code><br>
+</p><hr>
+<h3> Variables </h3>
+<p> Variables work the same way you’d expect them to. </p>
+  <table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col">Sass</th>
+    <th scope="col">CSS</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <code>
+        $base-color: #c6538;<br>
+        $border-dark: rgba($base-color, 0.88);<br><br>
+        .alert { <br>
+          border: 1px solid $border-dark;<br>
+        }
+      </code>
+  </td>
+    <td>
+      <code>
+        .alert { <br>
+          border: 1px solid rgba(198, 83, 140, 0.88);<br>
+        }
+      </code>
+  </td>
+  </tr>
+  </tbody>
+  </table><hr>
+<h3> Operators, Conditionals, and Loops </h3>
+<p> - Standard math operators:	+ , - , * , / , and % <br>
+  - Comparative (>,<,==,>=,<=, !=) and boolean (and, or, not) operators <br>
+  - Conditionals and loops (if, else, for, while, each) <br>
+  <table class="table table-bordered">
+  <thead>
+  <tr>
+    <th scope="col">Sass</th>
+    <th scope="col">CSS</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      <code>
+        @mixin button-format( $round-button, $size ) {<br>
+        color: white;<br>
+        background-color: blue;<br>
+        width: $size;<br><br>
+        @if $round-button and $size > 50px {<br>
+          height: $size;<br>
+          border-radius: $size / 2;<br>
+        }<br>
+      }<br><br>
+        .mybutton { <br>
+          @include button-format(true, 100px);<br>
+        }
+      </code>
+  </td>
+    <td>
+      <code>
+        .mybutton { <br>
+          color:white;<br>
+          background-color: blue;<br>
+          width: 100px;<br>
+          height: 100px;<br>
+          border-radius: 50px;<br>
+        }
+      </code>
+  </td>
+  </tr>
+  </tbody>
+  </table><hr>
+<h3> Mixins </h3>
+<p> A mixin lets you make groups of CSS declarations that you want to reuse throughout your site. You can even pass in values to make your mixin more flexible. </p>
+<table class="table table-bordered">
+<thead>
+<tr>
+  <th scope="col">Sass</th>
+  <th scope="col">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>
+    <code>
+      @mixin transform ( $property ) {<br>
+      -webkit-transform: $property;<br>
+      -ms-transform: $property;<br>
+      transform: $property;<br>
+    }<br>
+    .box { @include transform(rotate(30deg)); }
+    </code>
+</td>
+  <td>
+    <code>
+      .box { <br>
+      -webkit-transform: rotate(30deg);<br>
+      -ms-transform: rotate(30deg);<br>
+      transform: rotate(30deg);<br>
+    }
+    </code>
+</td>
+</tr>
+</tbody>
+</table><hr>
+<h3> Nesting </h3>
+<p> Sass lets you nest your CSS selectors in a way that follows the same visual hierarchy of your HTML </p>
+<table class="table table-bordered">
+<thead>
+<tr>
+  <th scope="col">Sass</th>
+  <th scope="col">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>
+    <code>
+      nav {<br>
+        ul {<br>
+          margin: 0;<br>
+          padding: 0;<br>
+          list-style: none;<br>
+        }<br><br>
+        li { display: inline-block; }<br><br>
+        a {<br>
+          display: block;<br>
+          padding: 6px 12px;<br>
+          text-decoration: none;<br>
+        }<br>
+      }
+    </code>
+</td>
+  <td>
+    <code>
+      nav ul {<br>
+        margin: 0;<br>
+        padding: 0;<br>
+        list-style: none;<br>
+      }<br>
+      nav li {<br>
+        display: inline-block;<br>
+      }<br>
+      nav a {<br>
+        display: block;<br>
+        padding: 6px 12px;<br>
+        text-decoration: none;<br>
+      }<br>
+    </code>
+</td>
+</tr>
+</tbody>
+</table><hr>
+<h3> Modules and Partials </h3>
+<p> You can split up your Sass code into separate files and load them as modules, which means you can refer to its variables, mixins, and functions in your Sass file with a namespace based on the filename.  Partials are files containing snippets of CSS not meant to be compiled into their own CSS files, but included in other Sass files (indicated by a ‘_’ before the filename). </p>
+<table class="table table-bordered">
+<thead>
+<tr>
+  <th scope="col">Sass</th>
+  <th scope="col">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>
+    <code>
+    ###_base.scss file###<br>
+    $font-stack: Helvetica, sans-serif;<br>
+    $primary-color: #333;<br><br>
+    body {<br>
+      font: 100% $font-stack;<br>
+      color: $primary-color;<br>
+    }<br><br>
+    ###Primary Sass file###<br>
+    @use 'base';<br><br>
+    .inverse {<br>
+      background-color: base.$primary-color;<br>
+      color: white;<br>
+    }
+    </code>
+</td>
+  <td>
+    <code>
+      body {<br>
+      font: 100% Helvetica, sans-serif;<br>
+      color: #333;<br>
+      }<br><br>
+      .inverse {<br>
+      background-color: #333;<br>
+      color: white;<br>
+      }
+    </code>
+</td>
+</tr>
+</tbody>
+</table>
+<p> * Sass has some of its own built-in modules for use as well (https://sass-lang.com/documentation/modules) </p>
+<hr>
+<h3> Extend/Inheritance </h3>
+<p> Lets you share a set of CSS properties from one selector to another. </p>
+<table class="table table-bordered">
+<thead>
+<tr>
+  <th scope="col">Sass</th>
+  <th scope="col">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>
+    <code>
+      .foo {<br>
+      color: black; <br>
+      border: 1px solid black;<br>
+      }<br><br>
+      .bar {<br>
+      @extend .foo;<br>
+      background-color: red;<br>
+      }
+    </code>
+</td>
+  <td>
+    <code>
+      .foo, .bar {<br>
+      color: black; <br>
+      border: 1px solid black;<br>
+      }<br><br>
+      .bar {<br>
+      background-color: red;<br>
+      }
+    </code>
+</td>
+</tr>
+</tbody>
+</table><hr>
+  </body>
+</html>
