@@ -6,7 +6,6 @@
 var c = document.getElementById("canvas");
 var clear = document.getElementById("clear");
 
-var lastPoint = []
 var radius = 25;
 var primaryColor = "blue";
 var secondaryColor = "cyan";
@@ -43,7 +42,6 @@ var clean = function() {
   while (c.childElementCount > 0) {
     c.removeChild(c.children[0]);
   }
-  lastPoint = [];
 };
 
 clear.addEventListener("click", function(){clean()});
