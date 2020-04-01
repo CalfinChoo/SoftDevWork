@@ -1,0 +1,28 @@
+1) Predictions:
+- It will make an alert that prints out the innerHTML of the table element you click on
+Observations:
+- It does exactly as predicted
+
+- I liked the modularity of the adding of the event listeners
+
+2) Predictions:
+- It will make an alert that prints out the innerHTML of the table column element you click, then prints out the innerHTML of the table row it is in,
+then prints out the innerHTML of the entire table
+Observations:
+- It does exactly as predicted
+- Alerts appear one at a time
+
+3) Predictions:
+- Perhaps the same thing as #2?
+Observations:
+- The parent has a true parameter in its addEventListener
+- The parent innerHTML is alerted first, and the other two are the same as the first two of #2 in order
+
+- The true parameter pushed up the parent table's command to be run first before its children
+- Perhaps stopPropagation stops following alerts from showing up after the first one
+
+4) Predictions:
+- Perhaps the same thing as #2?
+Observations:
+- The alerts were in parent, child order
+- The ordering of the event listeners do not matter when you have the true parameter
