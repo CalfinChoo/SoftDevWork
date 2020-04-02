@@ -93,6 +93,9 @@ var behave = function(ev, e) {
       if (e === circleList[i].ident) {
         circleList[i].x = getRandomIntervalInt(radius, c.width.baseVal.value - radius);
         circleList[i].y = getRandomIntervalInt(radius, c.height.baseVal.value - radius);
+        circleList[i].ident.setAttributeNS(null, 'cx', circleList[i].x);
+        circleList[i].ident.setAttributeNS(null, 'cy', circleList[i].y);
+        break;
       }
     }
     updateDraw = false;
