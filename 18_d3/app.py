@@ -8,9 +8,28 @@ import csv
 
 app = Flask(__name__)
 
+def parseCSV(file):
+    arr = []
+    with open(file, newline='') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=',')
+        count = 0
+        categories = []
+        for row in spamreader:
+            if (count == 0):
+                for i in row:
+                    categories.append(i)
+            else:
+                dict = {}
+                for i in range (len(categories)):
+                    dict[categories[i]] = row[i]
+                arr.append(dict)
+            count += 1
+    return arr
+
 @app.route("/")
 def root():
-    return render_template('index.html')
+    # print(parseCSV("static/drinks.csv"))
+    return render_template('index.html', data = parseCSV("static/drinks.csv"))
 
 if __name__ == "__main__":
     app.debug = True

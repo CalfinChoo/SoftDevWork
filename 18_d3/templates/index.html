@@ -9,7 +9,7 @@ K18: Come Up For Air
 <html>
     <head>
         <title></title>
-        <link rel="stylesheet" type="text/css" href="../static/style.css">
+        <!-- <link rel="stylesheet" type="text/css" href="../static/style.css"> -->
     </head>
 
     <body>
@@ -21,5 +21,11 @@ K18: Come Up For Air
         <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script>
         <script src="{{ url_for('static', filename='d3.js') }}"></script>
     </body>
+
+    <ul id="moves">
+      {% for x in data %}
+      <li style="display:none;" id="{{x["country"]}}">{{x["country"]}},{{x["beer_servings"]}},{{x["spirit_servings"]}},{{x["wine_servings"]}},{{x["total_litres_of_pure_alcohol"]}}</li>
+      {% endfor %}
+    </ul>
 
 </html>
