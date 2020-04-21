@@ -29,7 +29,11 @@ def parseCSV(file):
 @app.route("/")
 def root():
     # print(parseCSV("static/drinks.csv"))
-    return render_template('index.html', data = parseCSV("static/drinks.csv"))
+    categories = []
+    result = parseCSV("static/drinks.csv")
+    for key in result[0]:
+        categories.append(key)
+    return render_template('index.html', data = result, cat = categories)
 
 if __name__ == "__main__":
     app.debug = True

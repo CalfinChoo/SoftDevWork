@@ -27,5 +27,10 @@ K18: Come Up For Air
       <li style="display:none;" id="{{x["country"]}}">{{x["country"]}},{{x["beer_servings"]}},{{x["spirit_servings"]}},{{x["wine_servings"]}},{{x["total_litres_of_pure_alcohol"]}}</li>
       {% endfor %}
     </ul>
+    <ul id="cats">
+      {% for x in cat %}
+      <li style="display:none;" id="{{x}}">{{x}}</li>
+      {% endfor %}
+    </ul>
 
 </html>
